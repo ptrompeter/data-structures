@@ -21,10 +21,13 @@ class Node(object):
 class LinkedList(object):
     """Make Class LinkedList."""
 
-    def __init__(self, values=[], head=None):
+    def __init__(self, values=None):
         """Initialize New instance of LinkedList."""
         self.values = values
-        self.head = head
+        self.head = None
+        if values:
+            for i in values:
+                self.insert(i)
 
     def insert(self, val):
         """Insert value 'val' at the head of the list."""
@@ -51,17 +54,32 @@ class LinkedList(object):
     def search(self, val):
         """Will return the node containing 'val in the list if present. Else None."""
         node = self.head
-        while node
-            node = node.next_node
+        while node:
             if node.data == val:
                 return node
+            node = node.next_node
         return node
-
 
     def remove(self, node):
         """Remove given node from the list. Node must be item in list."""
-        pass
+        current = self.head
+        target_node = node
+        while current.next_node:
+            if current.next_node == target_node:
+                current.next_node = target_node.next_node
+                break
+            current = current.next_node
 
     def display(self):
         """Print List as Python Tuple Literal."""
-        pass
+        display_list = "("
+        current = self.head
+        while current:
+            if type(current.data) == str:
+                display_list += "'" + str(current.data) + "'" + ", "
+            else:
+                display_list += str(current.data) + ", "
+            current = current.next_node
+        display_list = display_list[:-2]
+        display_list += ")"
+        print(display_list)
