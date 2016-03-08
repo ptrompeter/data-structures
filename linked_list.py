@@ -83,3 +83,4 @@ class LinkedList(object):
         display_list = display_list[:-2]
         display_list += ")"
         print(display_list)
+        return display_list
