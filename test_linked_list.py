@@ -33,3 +33,10 @@ def test_LinkedList_4(a):
     from linked_list import LinkedList
     test_values = LinkedList([a])
     assert test_values.display() == 
+
+
+def test_LinkedList_display():
+    from linked_list import LinkedList
+    test_list = LinkedList([1, 2, 3])
+
+
