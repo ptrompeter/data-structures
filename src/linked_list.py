@@ -21,23 +21,21 @@ class Node(object):
 class LinkedList(object):
     """Make Class LinkedList."""
 
-    def __init__(self, values=None):
+    def __init__(self, values=[]):
         """Initialize New instance of LinkedList."""
         self.values = values
         self.head = None
-        if values:
-            for i in values:
-                self.insert(i)
+        for i in values:
+            self.insert(i)
 
     def insert(self, val):
         """Insert value 'val' at the head of the list."""
-        inserted_node = Node(val)
-        inserted_node.set_next(self.head)
+        inserted_node = Node(val, self.head)
         self.head = inserted_node
 
     def pop(self):
         """Pop first value off the head of the list and return it."""
-        popped = self.head
+        popped = self.head.data
         new_head = self.head.next_node
         self.head = new_head
         return popped
@@ -55,20 +53,31 @@ class LinkedList(object):
         """Will return the node containing 'val in the list if present. Else None."""
         node = self.head
         while node:
-            if node.data == val:
+            try:
+                if node.data == val:
+                    return node
+                node = node.next_node
                 return node
-            node = node.next_node
-        return node
+            except AttributeError:
+                return None
+        else:
+            return None
 
     def remove(self, node):
         """Remove given node from the list. Node must be item in list."""
         current = self.head
         target_node = node
         while current.next_node:
-            if current.next_node == target_node:
-                current.next_node = target_node.next_node
-                break
-            current = current.next_node
+            try:
+                if current.next_node == target_node:
+                    current.next_node = target_node.next_node
+                    break
+                current = current.next_node
+            except AttributeError:
+                return None
+        else:
+            self.head = None
+            # return None
 
     def display(self):
         """Print List as Python Tuple Literal."""
