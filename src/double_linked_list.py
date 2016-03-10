@@ -14,6 +14,7 @@ class DblNode(object):
 class DblList(LinkedList):
     """Create a subclass of LinkedList."""
 
+    # using LinkedList __init__ for DblList
     def insert(self, val):
         """Insert Node at the front (head) of list."""
         inserted_node = DblNode(val, self.head)

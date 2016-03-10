@@ -11,8 +11,7 @@ class Stack(object):
 
     def pop(self):
         """Pop first item off of Stack."""
-        popped = self.linked.pop()
-        return popped
+        return self.linked.pop()
 
     def push(self, val):
         """Push value to front of Stack."""
