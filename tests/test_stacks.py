@@ -9,7 +9,7 @@ VAL_LIST = [
 
 @pytest.mark.parametrize('a, b', VAL_LIST)
 def test_pop(a, b):
-    from stacks import Stack
+    from src.stacks import Stack
     test_stack = Stack(a)
     test_stack.push(b)
     assert test_stack.pop() == b
@@ -17,13 +17,13 @@ def test_pop(a, b):
 
 @pytest.mark.parametrize('a', VAL_LIST)
 def test_pop_1(a):
-    from stacks import Stack
+    from src.stacks import Stack
     test_stack = Stack(a)
     assert test_stack.pop() == a[-1]
 
 
 def test_pop_2():
-    from stacks import Stack
+    from src.stacks import Stack
     test_stack = Stack()
     with pytest.raises(AttributeError):
         test_stack.pop()
