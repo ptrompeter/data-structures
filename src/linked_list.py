@@ -9,14 +9,6 @@ class Node(object):
         self.data = data
         self.next_node = next_node
 
-    def get_next(self):
-        """Get Next Node."""
-        return self.next_node
-
-    def set_next(self, new_next):
-        """Set Next Node in List."""
-        self.next_node = new_next
-
 
 class LinkedList(object):
     """Make Class LinkedList."""
@@ -76,7 +68,6 @@ class LinkedList(object):
                 return None
         else:
             self.head = None
-            # return None
 
     def display(self):
         """Print List as Python Tuple Literal."""
