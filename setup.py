@@ -7,7 +7,7 @@ setup(
     version=0.1,
     author="Selena Flannery and Patrick Trompeter",
     license="MIT",
-    py_modules=["linked_list", "stacks"],
+    py_modules=["linked_list", "stacks", "double_linked_list"],
     package_dir={"": "src"},
     install_requires=["future"],
     extras_require={'test': ['pytest', 'pytest-xdist', 'tox']},

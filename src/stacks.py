@@ -1,5 +1,4 @@
 # _*_ coding: utf-8 _*_
-from linked_list import Node
 from linked_list import LinkedList
 
 
@@ -18,8 +17,3 @@ class Stack(object):
     def push(self, val):
         """Push value to front of Stack."""
         self.linked.insert(val)
-
-    def display(self):
-        """Display Stack Instance"""
-        self.linked.display()
-
