@@ -57,7 +57,6 @@ class LinkedList(object):
                 if node.data == val:
                     return node
                 node = node.next_node
-                return node
             except AttributeError:
                 return None
         else:
