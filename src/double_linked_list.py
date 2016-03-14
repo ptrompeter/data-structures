@@ -13,6 +13,13 @@ class DblNode(object):
 
 class DblList(LinkedList):
     """Create a subclass of LinkedList."""
+    def __init__(self, values=[]):
+        """Initialize New instance of LinkedList."""
+        self.values = values
+        self.head = None
+        for i in values:
+            self.insert(i)
+
 
     # using LinkedList __init__ for DblList
     def insert(self, val):

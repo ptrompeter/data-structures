@@ -10,8 +10,10 @@ setup(
     py_modules=["linked_list",
                 "stacks",
                 "double_linked_list",
-                "queue"
-                "selena_parens"],
+                "queue",
+                "selena_parens",
+                "patrick_parens",
+                "deque"],
     package_dir={"": "src"},
     install_requires=["future"],
     extras_require={'test': ['pytest', 'pytest-xdist', 'tox']},
