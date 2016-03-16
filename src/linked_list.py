@@ -40,6 +40,7 @@ class LinkedList(object):
             counter += 1
             node = node.next_node
         return counter
+ 
 
     def search(self, val):
         """Will return the node containing 'val in the list if present. Else None."""
