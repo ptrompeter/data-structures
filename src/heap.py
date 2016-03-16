@@ -10,14 +10,32 @@ class Heap(object):
         self.size = 0
         self.heapList = [None]
         for i in values:
-            self.push()
+            self.push(i)
 
-    def swap_down(self, root):
+    # def swap_down(self, root):
+    #     pass
 
     def pop(self):
         """Return."""
-        self.root = self.heapList[self.size]
-       if self.root < self.heapList[]
+        popped_value = self.heapList[1]
+        pos = 1
+        startval = self.heapList.pop()
+        self.heapList[pos] = startval
+        while pos < len(self.heapList) // 2:
+            big = self._bigger_child(pos)
+            if self.heapList[pos] < self.heapList[big]:
+                self.heapList[pos], self.heapList[big] = self.heapList[big], self.heapList[pos]
+                pos = big
+            else: break
+        return popped_value
+
+    def _bigger_child(self, index):
+        """Return the index of the larger child."""
+        if self.heapList[2 * index] < self.heapList[2 * index + 1]:
+            return 2 * index + 1
+        else:
+            return 2 * index
+
 
     def swap_up(self, i):
         """Take index of starting node. If starting node > parent, swap places, set new parent."""
@@ -33,6 +51,5 @@ class Heap(object):
         """Make new node. Increment size. Append node to heapList list. Check for swap up conditions."""
         self.size += 1
         self.heapList.append(data)
-        if self.heapList[self.size] > self.heapList[self.size // 2]:
-            self.swap_up(self.size)
+        self.swap_up(self.size)
         self.root = self.heapList[1]
