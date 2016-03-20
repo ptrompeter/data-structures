@@ -1,5 +1,3 @@
-
-
 class Priority(object):
     """Return."""
 
@@ -18,12 +16,29 @@ class Priority(object):
             i = i // 2
 
     def push(self, tup):
-        import pdb; pdb.set_trace()
         self.plist.append(tup)
         self._swap_up(len(self.plist) - 1)
 
     def pop(self):
-        pass
+        popped_value = self.plist[0]
+        startval = self.plist.pop()
+        pos = 0
+        self.plist[pos] = startval
+        while pos < len(self.plist) // 2:
+            priority = self._higher_priority_child(pos)
+            if self.plist[priority] < self.plist[pos]:
+                self.plist[pos], self.plist[priority] = self.plist[priority], self.plist[pos]
+                pos = priority
+            else: break
+        return popped_value
+
+    def _higher_priority_child(self, pos):
+        """Return the index of the larger child."""
+        index = pos + 1
+        if self.plist[(2 * index) - 1][0] > self.plist[(2 * index + 1) - 1][0]:
+            return (2 * index + 1) - 1
+        else:
+            return (2 * index) - 1
 
     def peek(self):
         return self.plist[0]

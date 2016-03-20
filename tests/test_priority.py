@@ -47,3 +47,28 @@ def test_pri_push4():
     test_pri = Priority(TEST_LIST)
     assert test_pri.plist[0] == (1, 1)
 
+def test_pri_pop():
+    test_pri = Priority(TEST_LIST)
+    test_pri.pop()
+    assert test_pri.plist[0] == (1, 2)
+
+def test_pri_pop2():
+    test_pri = Priority(TEST_LIST)
+    test_pri.pop()
+    test_pri.pop()
+    assert test_pri.plist[0] == (1, 3)
+
+def test_pri_pop3():
+    test_pri = Priority(TEST_LIST)
+    test_pri.pop()
+    test_pri.pop()
+    test_pri.pop()
+    assert test_pri.plist[0] == (2, 1)
+
+def test_pri_pop4():
+    test_pri = Priority(TEST_LIST)
+    test_pri.pop()
+    test_pri.pop()
+    test_pri.pop()
+    test_pri.pop()
+    assert test_pri.plist[0] == (2, 2)
