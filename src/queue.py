@@ -2,11 +2,10 @@
 from linked_list import LinkedList
 from linked_list import Node
 
-class Queue(LinkedList):
+class Queue(object):
     """Queue uses elements of linkedlist. Uses LinkedList.pop in dequeue."""
 
     def __init__(self):
-        self.linked_list = LinkedList()
         self.head = None
         self.size = 0
         self.is_empty = True
@@ -24,13 +23,21 @@ class Queue(LinkedList):
         self.size += 1
 
     def dequeue(self):
-        # if self.size > 0:
-            # self.size -= 1
-        # if self.size == 0:
-            # self.is_empty = True
-        self.size -=1 if self.size > 0: else self.is_empty = True
-        return self.linked_list.pop()
+        if self.size > 0:
+            self.size -= 1
+        if self.size == 0:
+            self.is_empty = True
+        # self.size -=1 if self.size > 0: else self.is_empty = True
+        return self._pop()
 
+    def _pop(self):
+        """Pop first value off the head of the list and return it."""
+        popped = self.head
+        try:
+            self.head = popped.next_node
+        except AttributeError:
+            self.head = None
+        return popped.data
 
     def peek(self):
         try:

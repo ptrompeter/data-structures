@@ -31,8 +31,11 @@ class LinkedList(object):
         popped = self.head
         # new_head = self.head.next_node
         # self.head = new_head
-        self.head = popped.next_node
+        try:
+            self.head = popped.next_node
         # return popped
+        except AttributeError:
+            self.head = None
         return popped.data
 
     def size(self):
