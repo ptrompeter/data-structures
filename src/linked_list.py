@@ -27,10 +27,13 @@ class LinkedList(object):
 
     def pop(self):
         """Pop first value off the head of the list and return it."""
-        popped = self.head.data
-        new_head = self.head.next_node
-        self.head = new_head
-        return popped
+        # popped = self.head.data
+        popped = self.head
+        # new_head = self.head.next_node
+        # self.head = new_head
+        self.head = popped.next_node
+        # return popped
+        return popped.data
 
     def size(self):
         """Return length of list."""
