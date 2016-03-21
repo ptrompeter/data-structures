@@ -32,13 +32,12 @@ class Priority(object):
             else: break
         return popped_value
 
-    def _higher_priority_child(self, pos):
+    def _higher_priority_child(self, index):
         """Return the index of the larger child."""
-        index = pos + 1
-        if self.plist[(2 * index) - 1][0] > self.plist[(2 * index + 1) - 1][0]:
-            return (2 * index + 1) - 1
+        if self.plist[(2 * index) + 1][0] > self.plist[(2 * index + 1) + 1][0]:
+            return (2 * index + 1) + 1
         else:
-            return (2 * index) - 1
+            return (2 * index) + 1
 
     def peek(self):
         return self.plist[0]

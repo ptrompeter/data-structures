@@ -1,4 +1,5 @@
 # _*_ coding: utf-8 _*_
+# from linked_list import LinkedList
 import pytest
 
 
@@ -36,20 +37,20 @@ def test_dll_shift():
     assert test_list.shift() == tail.data
 
 
-def test_dll_remove():
-    from src.double_linked_list import DblList
-    this_list = DblList([1])
-    this_list.insert(2)
-    this_list.insert(4)
-    this_list.insert('bob')
-    search = this_list.search(4)
-    this_list.remove(search)
-    assert this_list.size() == 3
+# def test_dll_remove():
+#     from src.double_linked_list import DblList
+#     this_list = DblList([1])
+#     this_list.insert(2)
+#     this_list.insert(4)
+#     this_list.insert('bob')
+    # search = this_list.search(4)
+#     this_list.remove(search)
+#     assert this_list.size() == 3
 
 
-def test_dll_remove2():
-    from src.double_linked_list import DblList
-    this_list = DblList([1])
-    search = this_list.search(4)
-    with pytest.raises(AttributeError):
-        this_list.remove(search)
+# def test_dll_remove2():
+#     from src.double_linked_list import DblList
+#     this_list = DblList([1])
+#     search = this_list.search(4)
+#     with pytest.raises(AttributeError):
+#         this_list.remove(search)
