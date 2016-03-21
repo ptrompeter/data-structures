@@ -1,7 +1,6 @@
 # _*_ Coding: utf-8 _*_
-class Node(object):
-    def __init__(self, data):
-        self.data = data
+from stacks import Stack
+from queue import Queue
 
 class Graph(object):
     """Create a directed, unweighted graph object."""
@@ -51,3 +50,35 @@ class Graph(object):
 
     def adjacent(self, n1, n2):
         return True if n2 in self.dict[n1] else False
+
+    def depth_first_traversal(self, start):
+        depth_list = []
+        new_stack = Stack([start])
+        while True:
+            try:
+                node = new_stack.pop()
+                if node not in depth_list:
+                    depth_list.append(node)
+                    children = self.dict[node][::-1]
+
+                    for child in children:
+                        new_stack.push(child)
+
+            except AttributeError:
+                return depth_list
+
+    def breadth_first_traversal(self, start):
+        import pdb
+        # pdb.set_trace()
+        breadth_list = []
+        new_queue = Queue()
+        new_queue.enqueue(start)
+        while not new_queue.is_empty:
+            node = new_queue.dequeue()
+            if node not in breadth_list:
+                breadth_list.append(node)
+                for child in self.dict[node]:
+                    new_queue.enqueue(child)
+        return breadth_list
+
+

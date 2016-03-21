@@ -1,10 +1,44 @@
 # _*_ Coding: utf-8 _*_
 
 import pytest
-from src.simple_graph import Node
+# from src.simple_graph import Node
+from src.simple_graph import Graph
 
-TEST_NODE_1 = Node(1)
-TEST_NODE_2 = Node(2)
+# TEST_NODE_1 = Node(1)
+# TEST_NODE_2 = Node(2)
+
+TEST_GRAPH = Graph()
+TEST_GRAPH.add_edge('a', 'b')
+TEST_GRAPH.add_edge('a', 'c')
+TEST_GRAPH.add_edge('a', 'd')
+TEST_GRAPH.add_edge('b', 'e')
+TEST_GRAPH.add_edge('b', 'f')
+TEST_GRAPH.add_edge('c', 'g')
+
+HARD_GRAPH = Graph()
+HARD_GRAPH.add_edge(1, 7)
+HARD_GRAPH.add_edge(1, 13)
+HARD_GRAPH.add_edge(1, 3)
+HARD_GRAPH.add_edge(7, 11)
+HARD_GRAPH.add_edge(13, 11)
+HARD_GRAPH.add_edge(13, 3)
+HARD_GRAPH.add_edge(3, 2)
+
+
+def test_sgraph_wide():
+    assert TEST_GRAPH.breadth_first_traversal('a') == ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+
+
+def test_sgraph_deep():
+    assert TEST_GRAPH.depth_first_traversal('a') == ['a', 'b', 'e', 'f', 'c', 'g', 'd']
+
+
+def test_sgraph_deep2():
+    assert HARD_GRAPH.depth_first_traversal(1) == [1, 7, 11, 13, 3, 2]
+
+
+def test_sgraph_wide2():
+    assert HARD_GRAPH.breadth_first_traversal(1) == [1, 7, 13, 3, 11, 2]
 
 
 def test_sgraph_nodes():
