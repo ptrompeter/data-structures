@@ -22,14 +22,14 @@ class Graph(object):
 
     def add_node(self, n):
         """Take a node, add to self.dict"""
-        self.dict[n] = []
+        self.dict[n] = {}
 
-    def add_edge(self, n1, n2):
+    def add_edge(self, n1, n2, weight=0):
         if n1 not in self.dict:
             self.add_node(n1)
         if n2 not in self.dict:
             self.add_node(n2)
-        self.dict[n1].append(n2)
+        self.dict[n1][n2] = weight
 
     def del_node(self, n):
         for key in self.dict.keys():
@@ -38,9 +38,7 @@ class Graph(object):
         del self.dict[n]
 
     def del_edge(self, n1, n2):
-        if n2 in self.dict[n1]:
-            self.dict[n1].remove(n2)
-        else: raise KeyError
+        self.dict[n1].pop(n2)
 
     def has_node(self, n):
         return True if n in self.dict.keys() else False
@@ -59,7 +57,7 @@ class Graph(object):
                 node = new_stack.pop()
                 if node not in depth_list:
                     depth_list.append(node)
-                    children = self.dict[node][::-1]
+                    children = list(self.dict[node].keys())
 
                     for child in children:
                         new_stack.push(child)
@@ -68,8 +66,6 @@ class Graph(object):
                 return depth_list
 
     def breadth_first_traversal(self, start):
-        import pdb
-        # pdb.set_trace()
         breadth_list = []
         new_queue = Queue()
         new_queue.enqueue(start)
