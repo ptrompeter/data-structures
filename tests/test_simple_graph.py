@@ -26,6 +26,11 @@ HARD_GRAPH.add_edge(13, 11)
 HARD_GRAPH.add_edge(13, 3)
 HARD_GRAPH.add_edge(3, 2)
 
+def test_dijkstra_1():
+    assert HARD_GRAPH.dijkstra(1,2)[0] == 2
+
+def test_dijkstra_2():
+    assert HARD_GRAPH.dijkstra(13,1) == None
 
 def test_sgraph_wide():
     # assert TEST_GRAPH.breadth_first_traversal('a') == ['a', 'b', 'c', 'd', 'e', 'f', 'g']
@@ -118,7 +123,7 @@ def test_sgraph_add_edge_add_n2():
     test_graph = Graph()
     test_graph.add_node(2) 
     test_graph.add_edge(2,3)
-    assert test_graph.dict[2] == {3:0}
+    assert test_graph.dict[2] == {3:1}
 
 def test_sgraph_add_edge_added_key():
     from src.simple_graph import Graph
@@ -172,7 +177,7 @@ def test_sgraph_neighbors():
     test_graph = Graph()
     test_graph.add_edge(2,3)
     test_graph.add_edge(2,4)
-    assert test_graph.neighbors(2) == {3:0,4:0}
+    assert test_graph.neighbors(2) == {3:1,4:1}
 
 def test_sgraph_neighbors_error():
     from src.simple_graph import Graph

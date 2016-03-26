@@ -1,6 +1,7 @@
 # _*_ Coding: utf-8 _*_
 from stacks import Stack
 from queue import Queue
+import heapq
 
 class Graph(object):
     """Create a directed, unweighted graph object."""
@@ -24,7 +25,7 @@ class Graph(object):
         """Take a node, add to self.dict"""
         self.dict[n] = {}
 
-    def add_edge(self, n1, n2, weight=0):
+    def add_edge(self, n1, n2, weight=1):
         if n1 not in self.dict:
             self.add_node(n1)
         if n2 not in self.dict:
@@ -76,5 +77,43 @@ class Graph(object):
                 for child in self.dict[node]:
                     new_queue.enqueue(child)
         return breadth_list
+
+    def dijkstra(self, start, end):
+        from itertools import count
+        unique = count()
+        visited = set()
+        heap = [(0, unique, start, ())]
+        while heap:
+            weight, junk, node, path = heapq.heappop(heap)
+            if node == end:
+                return weight, path
+            if node not in visited:
+                visited.add(node)
+                for neighbor, edge in self.dict[node].items():
+                    heapq.heappush(heap, (weight + edge, next(unique), neighbor, (neighbor, path)))
+
+    def floyd(self):
+        dist = {}
+        for n1 in self.dict:
+            dist[n1] = {}
+            dist[n1][n1] = 0
+        for n1 in dist:
+            for n2 in dist:
+                try:
+                    dist[n1][n2] = self.dict[n1][n2]
+                except KeyError:
+                    pass
+        for k in self.dict:
+            for i in self.dict:
+                for j in self.dict:
+                    try:
+                        if dist[i][j] > dist[i][k] + dist[k][j]:
+                            dist[i][j] = dist[i][k] + dist[k][j]
+                    except KeyError:
+                        pass
+        return dist
+
+
+
 
 
