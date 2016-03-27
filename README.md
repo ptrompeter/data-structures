@@ -22,3 +22,7 @@ Selena Parens:
     Retuns 1 if there are too many open parens
     Returns -1 if there are too many closing parens, or if the closing
     parens are not properly proceeded by an open paren. 
+
+
+Simple Graph:
+    A simple directed and unweighted graph.
