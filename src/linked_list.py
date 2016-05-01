@@ -27,13 +27,9 @@ class LinkedList(object):
 
     def pop(self):
         """Pop first value off the head of the list and return it."""
-        # popped = self.head.data
         popped = self.head
-        # new_head = self.head.next_node
-        # self.head = new_head
         try:
             self.head = popped.next_node
-        # return popped
         except AttributeError:
             self.head = None
         return popped.data
@@ -46,7 +42,6 @@ class LinkedList(object):
             counter += 1
             node = node.next_node
         return counter
- 
 
     def search(self, val):
         """Will return the node containing 'val in the list if present. Else None."""
@@ -63,32 +58,25 @@ class LinkedList(object):
 
     def remove(self, node):
         """Remove given node from the list. Node must be item in list."""
+        if node == self.head:
+            self.head = node.next_node
+            return
         current = self.head
-        target_node = node
         while current.next_node:
             try:
-                if current.next_node == target_node:
-                    current.next_node = target_node.next_node
+                if current.next_node == node:
+                    current.next_node = node.next_node
                     break
                 current = current.next_node
             except AttributeError:
-                return None
-        else:
-            self.head = None
+                break
 
     def display(self):
         """Print List as Python Tuple Literal."""
-        display_list = "("
+        display_list = []
         current = self.head
         while current:
-            if type(current.data) == str:
-                display_list += "'" + str(current.data) + "'" + ", "
-            else:
-                display_list += str(current.data) + ", "
+            data = "'{}'".format(current.data) if isinstance(current.data, str) else current.data
+            display_list.append("{},".format(data))
             current = current.next_node
-        display_list = display_list[:-2]
-        display_list += ")"
-        print(display_list)
-        return display_list
-
-    
+        return "({})".format(" ".join(display_list))
