@@ -2,6 +2,7 @@
 from linked_list import LinkedList
 from linked_list import Node
 
+
 class Queue(object):
     """Queue uses elements of linkedlist. Uses LinkedList.pop in dequeue."""
 
@@ -44,3 +45,6 @@ class Queue(object):
             return self.head.data
         except AttributeError:
             return None
+
+    def size(self):
+        return self.size

@@ -9,24 +9,31 @@ class Deque(object):
         self.dll = DblList(value)
 
     def append(self, value):
+        """Append a value to the deque."""
         self.dll.append(value)
 
     def appendleft(self, value):
+        """Append a value to the front of the deque."""
         self.dll.insert(value)
 
     def pop(self):
+        """Pop a value from the deque"""
         return self.dll.shift()
 
     def popleft(self):
+        """Pop a value from the front of the deque."""
         return self.dll.pop()
 
     def peek(self):
+        """Return the tail of the deque."""
         return self.dll.tail.data
 
     def peekleft(self):
+        """Return the head of the deque."""
         return self.dll.head.data
 
     def size(self):
+        """Return the number of objects in the deque."""
         cursor = self.dll.head
         if cursor is None:
             return 0
