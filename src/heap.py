@@ -1,22 +1,17 @@
 # -*- coding: utf-8 -*-a
-
-
 class Heap(object):
-    """Return."""
+    """Binary Heap Class."""
 
     def __init__(self, values=[]):
-        """Return."""
+        """Initialize Binary Heap Class."""
         self.root = None
         self.size = 0
         self.heapList = [None]
         for i in values:
             self.push(i)
 
-    # def swap_down(self, root):
-    #     pass
-
     def pop(self):
-        """Return."""
+        """Pop top value off of heap and return that value."""
         popped_value = self.heapList[1]
         pos = 1
         startval = self.heapList.pop()
@@ -26,7 +21,8 @@ class Heap(object):
             if self.heapList[pos] < self.heapList[big]:
                 self.heapList[pos], self.heapList[big] = self.heapList[big], self.heapList[pos]
                 pos = big
-            else: break
+            else:
+                break
         return popped_value
 
     def _bigger_child(self, index):
@@ -36,16 +32,14 @@ class Heap(object):
         else:
             return 2 * index
 
-
     def swap_up(self, i):
         """Take index of starting node. If starting node > parent, swap places, set new parent."""
         while i // 2 > 0:
             if self.heapList[i] > self.heapList[i // 2]:
-                self.heapList[i // 2], self.heapList[i] = self.heapList[i], self.heapList[i //2]
+                self.heapList[i // 2], self.heapList[i] = self.heapList[i], self.heapList[i // 2]
             else:
                 break
             i = i // 2
-
 
     def push(self, data):
         """Make new node. Increment size. Append node to heapList list. Check for swap up conditions."""
