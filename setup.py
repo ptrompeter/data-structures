@@ -1,6 +1,5 @@
 from setuptools import setup
 
-
 setup(
     name="data-structures",
     description="Collection of Classic Data Structures",
