@@ -131,12 +131,15 @@ def test_sgraph_add_edge_added_key():
     test_graph.add_node(2) 
     test_graph.add_edge(2,3)
     assert 3 in test_graph.nodes()
+    assert test_graph.dict[2] == {3:1}
 
 def test_sgraph_add_edge_no_nodes():
     from src.simple_graph import Graph
     test_graph = Graph()
     test_graph.add_edge(2,3)
     assert 3 in test_graph.nodes() and 2 in test_graph.nodes()
+    assert test_graph.dict[2] == {3:1}
+
 
 def test_sgraph_del_node():
     from src.simple_graph import Graph
